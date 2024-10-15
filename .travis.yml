@@ -11,9 +11,9 @@ script:
 deploy:
   provider: elasticbeanstalk
   access_key_id:
-    secure: "AKIA4RCAOGTZ2P65MP5X"
+    secure: AWS_ACCESS_KEY
   secret_access_key:
-    secure: "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"
+    secure: AWS_SECRET_KEY
   region: "us-east-2"
   app: "django-app-polls"
   env: "polls-app-env"
