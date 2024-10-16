@@ -4,6 +4,7 @@ python:
   - "3.9"
   - "3.10"
   - "3.11"
+  - "3.12"
 install:
   - pip install -r mysite/requirements.txt
 before_script:
@@ -16,16 +17,21 @@ script:
   - coverage report
 after_script:
   - coveralls
-before_deploy:
+
+env:
+  global:
+    - COVERALLS_REPO_TOKEN=6COi2NHZixOMoz9pRoxtHe9ArW1liolVQ
+
 deploy:
   provider: elasticbeanstalk
   access_key_id:
-    secure: AWS_ACCESS_KEY
+    secure: $AWS_ACCESS_KEY
   secret_access_key:
-    secure: AWS_SECRET_KEY
-  region: "us-east-2"
+    secure: $AWS_SECRET_KEY
+  region: us-east-1
   app: django-app-polls
   env: polls-app-env
-  bucket_name: "the-target-S3-bucket"
+  bucket_name: the-target-S3-bucket
   on:
-    all_branches: true
+    branch: main
+
