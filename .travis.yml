@@ -1,13 +1,22 @@
+dist: focal
 language: python
 python:
-  - "3.8"
   - "3.9"
   - "3.10"
   - "3.11"
 install:
-  - pip install -r requirements.txt
+  - pip install -r mysite/requirements.txt
+before_script:
+  - cd mysite
+  - python manage.py migrate
 script:
-  - pytest
+  - black --check .
+  - flake8 .
+  - coverage run --source=mysite,polls manage.py test
+  - coverage report
+after_script:
+  - coveralls
+before_deploy:
 deploy:
   provider: elasticbeanstalk
   access_key_id:
@@ -15,6 +24,8 @@ deploy:
   secret_access_key:
     secure: AWS_SECRET_KEY
   region: "us-east-2"
-  app: "django-app-polls"
-  env: "polls-app-env"
+  app: django-app-polls
+  env: polls-app-env
   bucket_name: "the-target-S3-bucket"
+  on:
+    all_branches: true
