@@ -29,7 +29,7 @@ deploy:
   access_key_id:
     secure: $AWS_FALTU_ACCESS_KEY
   secret_access_key:
-    secure: $AWS_FALTU_SECRET_KEY
+    secure: $AWS_FALTU_SECRET_KEY_withModifications
   region: us-east-1
   app: django-app-polls
   env: polls-app-env
