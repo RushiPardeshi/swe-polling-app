@@ -15,8 +15,8 @@ script:
   - flake8 .
   - coverage run --source=mysite,polls manage.py test
   - coverage report
-  - echo $AWS_ACCESS_KEY_ID
-  - echo $AWS_SECRET_KEY_ID
+  - echo $AWS_FALTU_ACCESS_KEY
+  - echo $AWS_FALTU_SECRET_KEY
 after_script:
   - coveralls
 
@@ -33,7 +33,7 @@ deploy:
   region: us-east-1
   app: django-app-polls
   env: polls-app-env
-  bucket_name: the-target-S3-bucket
+  bucket_name: elasticbeanstalk-us-east-1-545009869282
   on:
     branch: main
 

@@ -1,7 +1,7 @@
 __init__.*
 __pycache__
-
-
+*.pyc 
+.DS_Store
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
