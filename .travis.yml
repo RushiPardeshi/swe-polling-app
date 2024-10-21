@@ -24,10 +24,8 @@ env:
 
 deploy:
   provider: elasticbeanstalk
-  access_key_id:
-    secure: $AWS_chotu_id
-  secret_access_key:
-    secure: $AWS_chotu_secret
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_ACCESS_SECRET_KEY
   region: us-east-1
   app: sample-app1
   env: sampel-app1-env
